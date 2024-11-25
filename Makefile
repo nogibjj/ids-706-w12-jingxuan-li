@@ -1,6 +1,6 @@
 # Define the image name
-IMAGE_NAME = bmi_app
-DOCKER_ID_USER = jin131
+IMAGE_NAME = weather_app
+DOCKER_ID_USER = jourdanljx0803
 
 # Build the Docker image
 build:
