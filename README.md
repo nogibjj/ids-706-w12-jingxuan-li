@@ -4,6 +4,7 @@ This is a simple Python application that demonstrates how to containerize an app
 
 ## Table of Contents
 
+
 - [Prerequisites](#prerequisites)
 - [Application Description](#application-description)
 - [Dockerfile](#dockerfile)
