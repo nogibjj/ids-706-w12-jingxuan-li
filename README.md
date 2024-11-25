@@ -1,88 +1,85 @@
+[![Build and Push Docker Image](https://github.com/nogibjj/ids-706-w12-jingxuan-li/actions/workflows/cicd.yml/badge.svg)](https://github.com/nogibjj/ids-706-w12-jingxuan-li/actions/workflows/cicd.yml)
 # Simple Python Application with Docker
 
 This is a simple Python application that demonstrates how to containerize an application using Docker and build and push the Docker image in a CI/CD pipeline.
 
 ## Table of Contents
 
-
-- [Prerequisites](#prerequisites)
-- [Application Description](#application-description)
+- [Application Setup](#application-setup)
 - [Dockerfile](#dockerfile)
-- [Build and Run Docker Container](#build-and-run-docker-container)
+- [Makefile Commands](#makefile-commands)
+- [Running the Application](#running-the-application)
 - [CI/CD Pipeline](#cicd-pipeline)
-- [Push to Docker Hub](#push-to-docker-hub)
 
-## Prerequisites
+## Application Setup
 
-- Docker installed
-- Docker Hub account (or another container management service)
+A Flask application defined in `app.py`:
 
-## Application Description
-
-This application is a simple Flask application that provides a temperature converter to convert Celsius to Fahrenheit.
 
 ## Dockerfile
 
-Below is the Dockerfile used to containerize the application:
+A Dockerfile is already set up to containerize the application:
 
-```dockerfile
-# Use the official Python base image
-FROM python:3.9-slim
+## Makefile Commands
 
-# Set the working directory
-WORKDIR /app
+The `Makefile` provides several commands to manage the Docker image and container:
 
-# Copy the current directory contents into the container at /app
-COPY . .
 
-# Install dependencies
-RUN pip install flask
+- **build**: Builds the Docker image.
+- **run**: Runs the Docker container.
+- **clean**: Removes the Docker image.
+- **image_show**: Lists Docker images.
+- **container_show**: Lists running Docker containers.
+- **push**: Tags and pushes the Docker image to Docker Hub.
+- **login**: Logs into Docker Hub.
 
-# Expose the application port
-EXPOSE 5000
+## Running the Application
 
-# Run the application
-CMD ["python", "w12/app.py"]
-```
-
-## Build and Run Docker Container
+To run the application using `make`, follow these steps:
 
 1. **Build the Docker image**:
 
    ```bash
-   docker build -t my-python-app .
+   make build
    ```
 
 2. **Run the Docker container**:
 
    ```bash
-   docker run -p 5000:5000 my-python-app
+   make run
    ```
 
-   Access the application at `http://localhost:5000`.
+   The application will be accessible at `http://localhost:5001`.
+The application is a simple Flask app that provides a temperature converter feature. Users can input a temperature in Celsius, and the application will convert it to Fahrenheit and display the result.
+
+- **Input Celsius Temperature**: Users enter the Celsius temperature in a web form.
+
+- **Convert to Fahrenheit**: The application receives the Celsius input, performs the calculation, and converts it to Fahrenheit.
+
+
+- **Display Result**: The converted Fahrenheit temperature is displayed on the webpage.
+
+3. **Show Docker images**:
+
+   ```bash
+   make image_show
+   ```
+
+4. **Show running Docker containers**:
+
+   ```bash
+   make container_show
+   ```
+
+5. **Clean up Docker images**:
+
+   ```bash
+   make clean
+   ```
 
 ## CI/CD Pipeline
 
-In your CI/CD pipeline, you can automate the build and push of the Docker image using the following steps:
+The CI/CD pipeline is configured to build and push the Docker image automatically when changes are pushed to the `main` branch:
 
-1. **Build the Docker image**:
+```yaml:.github/workflows/cicd.yml
 
-   ```bash
-   docker build -t my-dockerhub-username/my-python-app:latest .
-   ```
-
-2. **Log in to Docker Hub**:
-
-   ```bash
-   echo "$DOCKER_HUB_PASSWORD" | docker login -u "$DOCKER_HUB_USERNAME" --password-stdin
-   ```
-
-3. **Push the Docker image**:
-
-   ```bash
-   docker push my-dockerhub-username/my-python-app:latest
-   ```
-
-## Push to Docker Hub
-
-Ensure that you have set up Docker Hub credentials in your CI/CD pipeline to successfully push the image.
