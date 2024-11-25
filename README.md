@@ -85,7 +85,3 @@ In your CI/CD pipeline, you can automate the build and push of the Docker image 
 ## Push to Docker Hub
 
 Ensure that you have set up Docker Hub credentials in your CI/CD pipeline to successfully push the image.
-
----
-
-Please adjust the above steps according to your specific application and CI/CD tools (such as GitHub Actions, GitLab CI/CD, etc.). I hope this README file helps you successfully containerize and deploy your Python application!
