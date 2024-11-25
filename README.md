@@ -59,6 +59,9 @@ The application is a simple Flask app that provides a temperature converter feat
 
 - **Display Result**: The converted Fahrenheit temperature is displayed on the webpage.
 
+  ![image](https://github.com/user-attachments/assets/18c89fcf-ae7f-42c4-8c9b-7522adfc2013)
+
+
 3. **Show Docker images**:
 
    ```bash
@@ -79,7 +82,5 @@ The application is a simple Flask app that provides a temperature converter feat
 
 ## CI/CD Pipeline
 
-The CI/CD pipeline is configured to build and push the Docker image automatically when changes are pushed to the `main` branch:
-
-```yaml:.github/workflows/cicd.yml
+The CI/CD pipeline is configured to build and push the Docker image automatically when changes are pushed to the `main` branch
 
