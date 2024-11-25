@@ -1,7 +1,3 @@
-Certainly! Here's a README file in English for a simple Python application that demonstrates how to containerize the application using Docker and build and push the Docker image in a CI/CD pipeline.
-
----
-
 # Simple Python Application with Docker
 
 This is a simple Python application that demonstrates how to containerize an application using Docker and build and push the Docker image in a CI/CD pipeline.
